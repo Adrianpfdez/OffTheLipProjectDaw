@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Hardware";
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="~/Content/Main.js"></script>
+
+<div id="headerDocumentary">
+    <h2>@ViewBag.Title</h2>
+</div>
+@*<hr />*@
+<br />
+
+@using (Html.BeginForm("Index", "Hardware"))
+{
+    <div class="search">
+        @Html.TextBox("searchString", "", new { @class = "textboxSearch", @placeholder = "Find by name" })
+        <input type="submit" id="submitSearch" value="Search" class="btn btn-default" />
+    </div>
+}
+
+<section class="grid-container">
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <div class="grid-item">
+                <a href="@Url.Action("DisplayHardware", "Hardware", new { DocId = @item.Id })">
+                    <p>@item.Name</p>
+                    <img src="@item.Image" height="250" width="400" />
+                </a>
+            </div>
+        }
+    }
+
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+        };
+        </script>
+    }
+</section>

@@ -1,0 +1,16 @@
+﻿@model List<OffTheLipProject.Models.ModelOTL.DocumentaryCommentViewModel>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <div>
+            <label>Comment: </label>
+            <textarea>@item.Author</textarea>
+        </div>
+        <div>
+            <label>Comment: </label>
+            <textarea>@item.Text</textarea>
+        </div>
+    }
+}

@@ -1,0 +1,66 @@
+﻿@model OffTheLipProject.Models.ModelOTL.NewsCommentViewModel
+@using OffTheLipProject.Models.ModelOTL
+
+@{
+    ViewBag.Title = "DisplayNew";
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+<link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<script type="text/javascript" src="~/Content/Main.js"></script>
+
+<h2>@Model.Name</h2>
+<hr />
+
+<div id="contDisplay">
+    <div>
+        <img src="@Model.Image" height="700" width="1100" />
+        <br />
+        <br />
+
+        <p style="max-width:1100px">@Model.Description</p>
+        <p>@Model.Location</p>
+
+        @if (Model.SurferName != null)
+        {
+            <p>@Html.ActionLink(Model.SurferName, "Index", "Surfer",new { surferName = Model.SurferName }, null)</p>
+        }
+
+        <br />
+
+        <div>
+            <hr />
+            <div id="contComments">
+                <h4 id="commentsTitle">Show Comments (@Model.NumComments)</h4>
+                <i id="iconComment" class="icon-chevron-down"></i>
+            </div>
+
+            <div id="contCommentsPartial">
+                @{Html.RenderPartial("_DisplayCommentsNews", (List<NewsCommentViewModel>)ViewBag.Comments);}
+            </div>
+            <hr />
+        </div>
+
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("SetComment", "News", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h5>Create a new comment:</h5>
+
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div>
+                    @Html.HiddenFor(a => a.DocId)
+                    @Html.TextAreaFor(b => b.Text, new { @id = "textarea" })
+                    <input type="submit" style="display:flex" class="btn btn-default" value="Send" />
+                </div>
+
+                <br />
+            }
+        }
+        @Html.ActionLink("Back to News", "Index", "News")
+        <br>
+        <br>
+    </div>
+</div>
+

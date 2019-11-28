@@ -1,0 +1,14 @@
+﻿@model OffTheLipProject.Models.ApplicationUser
+@{
+    Layout = null;
+}
+
+<div>
+    <ul>
+        <li>@Html.LabelFor(model => model.Name): @Html.DisplayFor(model => model.Name)</li>
+        <li>@Html.LabelFor(model => model.LastName): @Html.DisplayFor(model => model.LastName)</li>
+        <li>@Html.LabelFor(model => model.Nationality): @Html.DisplayFor(model => model.Nationality)</li>
+    </ul>
+</div>
+
+

@@ -1,0 +1,211 @@
+﻿body {
+    background-color: #212121;
+    color: antiquewhite;
+}
+
+#contCarousel {
+    display: flex;
+    justify-content: center;
+}
+
+#contCarousel > div {
+    width: 60%;
+}
+
+.contText {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 10%;
+    width: 80%;
+}
+
+.text {
+    font-size: 26px;
+}
+
+.removeLineBreak {
+    display: inline;
+    font-weight: bold;
+}
+
+/*iframe Documentary*/
+#size {
+    width: 400px;
+    height: 250px;
+}
+
+/*contenedor centrado Display*/
+#contDisplay {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+/*iframe centrado Display*/
+#sizeCenter {
+    width: 1100px;
+    height: 628px;
+}
+
+#textarea {
+    width: 60%;
+}
+
+input, textarea {
+    color: black;
+}
+
+.grid-container {
+    display: grid;
+    text-align: center;
+    grid-template-columns: auto auto ;
+    padding: 10px;
+}
+
+.grid-item {
+    padding: 50px;
+    margin: 35px;
+}
+
+.grid-item:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.grid-item > a {
+    text-decoration: none;
+    color: antiquewhite;
+    font-style: italic;
+    font-size: large;
+}
+
+.grid-item > a:hover {
+    text-decoration: none;
+    color: antiquewhite;
+    font-style: normal;
+    font-size: large;
+}
+
+#contComments {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#contSurfer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.elementSurfer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-right: 50px;
+}
+
+#likes {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5px;
+    padding-top: 20px;
+    max-width: 1100px;
+}
+
+#likes > p {
+    width: 1040px;
+}
+
+#headerDocumentary {
+    width: 100%;
+    height: 300px;
+    background-image: url("/Content/img/Craig-Anderson.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -600px;
+}
+
+#headerDocumentary > h2 {
+    font-size: 40px;
+    font-family: fantasy;
+    position: absolute;
+    top: 200px;
+    left: 260px;
+}
+
+/*
+ * ----------------------------------------
+ * Animation grow
+ * ----------------------------------------
+*/
+
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+}
+
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+/*Caja de texto buscador*/
+.textboxSearch {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+   
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*Div search*/
+.search {
+    padding-top: 16px;
+    padding-left: 16px;
+}
+
+#pagination {
+    text-align: center;
+}
+
+#pagination > button > a {
+    color: black;
+}
+
+#pagination > button > a:hover {
+    text-decoration: none;
+}
+
+#pagination > text {
+    padding: 5px;
+}

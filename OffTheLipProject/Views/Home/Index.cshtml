@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="~/Content/Main.js"></script>
+
+@*<h1>@ViewBag.Title</h1>
+<hr />*@
+
+<br />
+<section id="contCarousel">
+    <div>
+        <div id="slideContainer" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#slideContainer" data-slide-to="0" class="active"></li>
+                <li data-target="#slideContainer" data-slide-to="1"> </li>
+                <li data-target="#slideContainer" data-slide-to="2"> </li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="~/Content/img/img1.jpg" class="imgCarousel" />
+                    <div class="carousel-caption d-none d-md-block">
+                        @*<h1>California</h1>
+                        <h3>Aquel viaje de Enero...</h3>*@
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="~/Content/img/img2.jpg" class="imgCarousel" />
+                </div>
+
+                <div class="item">
+                    <img src="~/Content/img/img3.jpg" class="imgCarousel" />
+                </div>
+            </div>
+
+            @*<a href="#slideContainer" class="left carousel-control" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a href="#slideContainer" class="right carousel-control" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>*@
+        </div>
+    </div>
+</section>
+<br />
+<br />
+
+<div class="contText">
+    <p class="text">
+        Off The Lip is a young surfing website born in Spain.
+        We have established ourselves as the new shout on surfing information. We are changing the surfing landscape as we know it today.
+        Injecting a much needed dose of documentaries, news and hardware.
+        Easy, We love surfing.
+    </p>
+</div>
+
+<br />
+<br />
+<br />
+
+@if (TempData["SurferMessage"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@TempData["SurferMessage"]");
+        };
+    </script>
+}

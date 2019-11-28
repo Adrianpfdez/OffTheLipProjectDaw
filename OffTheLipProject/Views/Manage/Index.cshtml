@@ -1,0 +1,54 @@
+﻿@model OffTheLipProject.Models.IndexViewModel
+
+ 
+@{
+    ViewBag.Title = "Manage";
+}
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+<h2>@ViewBag.Title</h2>
+<p class="text-success">@ViewBag.StatusMessage</p>
+<hr />
+
+<div>
+    <p class="removeLineBreak">Password:</p>
+    [
+    @if (Model.HasPassword)
+    {
+        @Html.ActionLink("Change password", "ChangePassword")
+    }
+    else
+    {
+        @Html.ActionLink("Create", "SetPassword")
+    }
+    ]
+</div>
+
+@*<div>
+    <dl class="dl-horizontal">
+
+        <dt>Password:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change password", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Create", "SetPassword")
+            }
+            ]
+        </dd>
+    </dl>
+</div>*@
+
+<br />
+<br />
+<br />
+
+<div>
+    <h3>User Information</h3>
+    <hr />
+    <div>@{Html.RenderAction("UserInformation", "Account");}</div>
+    <div>@Html.ActionLink("Edit", "Edit", "Account") | @Html.ActionLink("Delete", "Delete", "Account")</div>
+</div>

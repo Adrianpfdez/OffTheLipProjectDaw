@@ -1,0 +1,48 @@
+﻿@model List<OffTheLipProject.Models.Documentary>
+@*<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@
+
+@{
+    ViewBag.Title = "Documentary";
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+<h2>@ViewBag.Title</h2>
+<hr />
+
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{
+    using (Html.BeginForm("Index", "Post"))
+    {
+        <input type="submit" value="Create Post" class="btn btn-default" />
+    }
+}
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" class="btn btn-default" />
+    </p>
+}
+
+<section id="contDocumentary">
+    @*<div class="enlinea">
+            <iframe id="size" src="https://player.vimeo.com/video/295670299" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p><a href="https://vimeo.com/295670299">OCTOPUS VIDEO NO. 4: CHIPPA WILSON.</a></p>
+        </div>
+    *@
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <div class="enlinea">
+                <iframe id="size" src=@item.Url frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>@Html.ActionLink(@item.Name, "Display", "Post", new { DocId = @item.Id }, null)</p>
+            </div>
+        }
+    }
+</section>
+
+@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@

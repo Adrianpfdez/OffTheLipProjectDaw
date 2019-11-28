@@ -1,0 +1,76 @@
+﻿@model List<OffTheLipProject.Models.Documentary>
+@using OffTheLipProject.Models;
+
+@{
+    ViewBag.Title = "Cinema";
+
+    int currentPage = Convert.ToInt32(Request.QueryString.Get("page") ?? "0");
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="~/Content/Main.js"></script>
+
+<div id="headerDocumentary">
+    <h2>@ViewBag.Title</h2>
+</div>
+<br />
+
+@using (Html.BeginForm("Index", "Documentary"))
+{
+    <div class="search">
+        @Html.TextBox("searchString", "", new { @class = "textboxSearch", @placeholder = "Find by name" })
+        <input type="submit" id="submitSearch" value="Search" class="btn btn-default" />
+    </div>
+}
+
+<section class="grid-container">
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <div class="grid-item">
+                <a href="@Url.Action("DisplayPost", "Documentary", new { DocId = @item.Id })">
+                    <p>@item.Name</p>
+                    <iframe id="size" src=@item.Url frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </a>
+            </div>
+        }
+    }
+
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+        };
+        </script>
+    }
+</section>
+
+@if (TempData["searchString"] == null || TempData["searchString"].ToString() == "")
+{
+    <div id="pagination">
+        @if (currentPage > 0)
+        {
+            <button name="page" value="-1" class="btn btn-default"><a href="@Url.Action("Index", "Documentary", new { page = currentPage - 1 })">Prev</a></button>
+        }
+
+        @{
+            var displaypage = currentPage + 1;
+            ApplicationDbContext db = new ApplicationDbContext();
+            var numDocumentaries = db.Documentaries.Count();
+            int n = numDocumentaries - ((currentPage + 1) * 4);
+        }
+
+        <text>Page @displaypage</text>
+
+        @if (n > 0)
+        {
+            <button name="page" value="1" class="btn btn-default"><a href="@Url.Action("Index", "Documentary", new { page = currentPage + 1 })">Next</a></button>
+        }
+    </div>
+}
+
+
+<br />
+<br />

@@ -1,0 +1,82 @@
+﻿@model OffTheLipProject.Models.ModelOTL.SurferViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+
+<h2>Surfer</h2>
+<hr />
+
+<div id="contSurfer">
+    <div class="elementSurfer">
+        <div style="padding-right:30px">
+            <label for="@Model.Surfer.Name">Name </label>
+            <p>@Model.Surfer.Name</p>
+
+            <label for="@Model.Surfer.Stance">Stance </label>
+            <p>@Model.Surfer.Stance</p>
+
+            <label for="@Model.Surfer.Natinality">Nationality </label>
+            <p>@Model.Surfer.Natinality</p>
+
+            <label for="@Model.Surfer.Competitor">Competitor </label>
+            @if (Model.Surfer.Competitor == true)
+            {
+                <p>yes</p>
+            }
+            else
+            {
+                <p>no</p>
+            }
+        </div>
+        <div>
+            <img src="@Model.Surfer.Image" />
+        </div>
+    </div>
+</div>
+
+<section class="grid-container">
+    @if (Model.News != null)
+    {
+        foreach (var item in Model.News)
+        {
+            <div class="grid-item">
+                <a href="@Url.Action("DisplayNews", "News", new { DocId = @item.Id })">
+                    <p>@item.Name</p>
+                    <img src="@item.Image" height="250" width="400" />
+                </a>
+            </div>
+        }
+    }
+
+    @if (Model.Hardwares != null)
+    {
+        foreach (var item in Model.Hardwares)
+        {
+            <div class="grid-item">
+                <a href="@Url.Action("DisplayHardware", "Hardware", new { DocId = @item.Id })">
+                    <p>@item.Name</p>
+                    <img src="@item.Image" height="250" width="400" />
+                </a>
+            </div>
+        }
+    }
+
+    @if (Model.Documentaries != null)
+    {
+        foreach (var item in Model.Documentaries)
+        {
+            <div class="grid-item">
+                <a href="@Url.Action("DisplayPost", "Documentary", new { DocId = @item.Id })">
+                    @*<p>@Html.ActionLink(@item.Name, "DisplayPost", "Documentary", new { DocId = @item.Id }, null)</p>*@
+                    <p>@item.Name</p>
+                    <iframe id="size" src=@item.Url frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </a>
+            </div>
+        }
+    }
+</section>
+
+

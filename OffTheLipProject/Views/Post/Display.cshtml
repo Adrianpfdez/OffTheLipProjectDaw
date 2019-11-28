@@ -1,0 +1,43 @@
+﻿@model OffTheLipProject.Models.Documentary
+@{
+    ViewBag.Title = "Display";
+}
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+<h2>@Model.Name</h2>
+<hr />
+
+<div id="contDisplay">
+    <div>
+        <iframe id="sizeCenter" src=@Model.Url frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p>@Model.Description</p>
+        <p>@Model.Location</p>
+        <div>
+            @using (Html.BeginForm("SetComentario", "Comentario", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4> Create a new post:</h4>
+                <br />
+
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label>
+                            Nombre
+                            <input type="text" />
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label>
+                            Comentario
+                            <textarea />
+                        </label>
+                    </div>
+                </div>
+ 
+            }
+        </div>
+</div>
+

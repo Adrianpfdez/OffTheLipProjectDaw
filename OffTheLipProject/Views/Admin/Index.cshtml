@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Admin";
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+
+<h2>@ViewBag.Title</h2>
+<hr />
+
+<ol>
+    <li>@Html.ActionLink("Create News", "CreateNews", "News")</li>
+    <li>@Html.ActionLink("Create Video", "CreatePost", "Documentary")</li>
+    <li>@Html.ActionLink("Create Hardware", "CreateHardware", "Hardware")</li>
+    <li>@Html.ActionLink("Create Surfer", "CreateSurfer", "Surfer")</li>
+</ol>
