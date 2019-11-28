@@ -12,11 +12,23 @@ namespace OffTheLipProject.Controllers
     {
         readonly ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString, int page = 0)
         {
-            List<Hardware> harwares = db.Hardwares.ToList();
+            List<Hardware> harware = db.Hardwares.ToList();
 
-            return View(harwares);
+            var hardwareDB = db.Hardwares;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                harware = hardwareDB.Where(s => s.Name.Contains(searchString) || s.Description.Contains(searchString)).ToList();
+            }
+            else
+            {
+                harware = hardwareDB.OrderBy(o => o.Id).Skip(page * 4).Take(4).ToList();
+            }
+
+            TempData["searchString"] = searchString;
+            return View(harware);
         }
 
         public ActionResult CreateHardware()

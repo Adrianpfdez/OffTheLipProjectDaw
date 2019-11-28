@@ -1,9 +1,7 @@
 ﻿@model List<OffTheLipProject.Models.Documentary>
 @using OffTheLipProject.Models;
-
 @{
     ViewBag.Title = "Cinema";
-
     int currentPage = Convert.ToInt32(Request.QueryString.Get("page") ?? "0");
 }
 
@@ -70,7 +68,6 @@
         }
     </div>
 }
-
 
 <br />
 <br />

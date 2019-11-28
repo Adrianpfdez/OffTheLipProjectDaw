@@ -1,6 +1,8 @@
 ﻿@model List<OffTheLipProject.Models.ModelOTL.News>
+@using OffTheLipProject.Models;
 @{
     ViewBag.Title = "News";
+    int currentPage = Convert.ToInt32(Request.QueryString.Get("page") ?? "0");
 }
 
 <link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
@@ -9,7 +11,6 @@
 <div id="headerDocumentary">
     <h2>@ViewBag.Title</h2>
 </div>
-@*<hr />*@
 <br />
 
 @using (Html.BeginForm("Index", "News"))
@@ -45,5 +46,29 @@
     }
 </section>
 
+@if (TempData["searchString"] == null || TempData["searchString"].ToString() == "")
+{
+    <div id="pagination">
+        @if (currentPage > 0)
+        {
+            <button name="page" value="-1" class="btn btn-default"><a href="@Url.Action("Index", "News", new { page = currentPage - 1 })">Prev</a></button>
+        }
 
+        @{
+            var displaypage = currentPage + 1;
+            ApplicationDbContext db = new ApplicationDbContext();
+            var numNews = db.News.Count();
+            int n = numNews - ((currentPage + 1) * 4);
+        }
 
+        <text>Page @displaypage</text>
+
+        @if (n > 0)
+        {
+            <button name="page" value="1" class="btn btn-default"><a href="@Url.Action("Index", "News", new { page = currentPage + 1 })">Next</a></button>
+        }
+    </div>
+}
+
+<br />
+<br />

@@ -13,15 +13,22 @@ namespace OffTheLipProject.Controllers
     {
         readonly ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, int page = 0)
         {
             List<News> news = db.News.ToList();
 
+            var newsDB = db.News;
+
             if (!String.IsNullOrEmpty(searchString))
             {
-                news = db.News.Where(s => s.Name.Contains(searchString) || s.Description.Contains(searchString)).ToList();
+                news = newsDB.Where(s => s.Name.Contains(searchString) || s.Description.Contains(searchString)).ToList();
+            }
+            else
+            {
+                news = newsDB.OrderBy(o => o.Id).Skip(page * 4).Take(4).ToList();
             }
 
+            TempData["searchString"] = searchString;
             return View(news);
         }
 
