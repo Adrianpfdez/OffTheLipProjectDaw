@@ -25,7 +25,7 @@ namespace OffTheLipProject.Controllers
             }
             else
             {
-                news = newsDB.OrderBy(o => o.Id).Skip(page * 4).Take(4).ToList();
+                news = newsDB.OrderBy(o => o.Id).Skip(page * 6).Take(6).ToList();
             }
 
             TempData["searchString"] = searchString;

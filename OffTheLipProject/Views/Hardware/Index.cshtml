@@ -20,12 +20,12 @@
     </div>
 }
 
-<section class="grid-container">
+<section class="contenedor">
     @if (Model != null)
     {
         foreach (var item in Model)
         {
-            <div class="grid-item">
+            <div class="flex-item">
                 <a href="@Url.Action("DisplayHardware", "Hardware", new { DocId = @item.Id })">
                     <p>@item.Name</p>
                     <img src="@item.Image" height="250" width="400" />
@@ -56,7 +56,7 @@
             var displaypage = currentPage + 1;
             ApplicationDbContext db = new ApplicationDbContext();
             var numHardware = db.Hardwares.Count();
-            int n = numHardware - ((currentPage + 1) * 4);
+            int n = numHardware - ((currentPage + 1) * 6);
         }
 
         <text>Page @displaypage</text>

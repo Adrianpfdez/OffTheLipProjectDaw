@@ -26,7 +26,7 @@ namespace OffTheLipProject.Controllers
             }
             else
             {
-                documentaries = documentariesDB.OrderBy(o => o.Id).Skip(page * 4).Take(4).ToList();
+                documentaries = documentariesDB.OrderBy(o => o.Id).Skip(page * 6).Take(6).ToList();
             }
 
             TempData["searchString"] = searchString;

@@ -21,12 +21,12 @@
     </div>
 }
 
-<section class="grid-container">
+<section class="contenedor">
     @if (Model != null)
     {
         foreach (var item in Model)
         {
-            <div class="grid-item">
+            <div class="flex-item">
                 <a href="@Url.Action("DisplayPost", "Documentary", new { DocId = @item.Id })">
                     <p>@item.Name</p>
                     <iframe id="size" src=@item.Url frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -57,7 +57,7 @@
             var displaypage = currentPage + 1;
             ApplicationDbContext db = new ApplicationDbContext();
             var numDocumentaries = db.Documentaries.Count();
-            int n = numDocumentaries - ((currentPage + 1) * 4);
+            int n = numDocumentaries - ((currentPage + 1) * 6);
         }
 
         <text>Page @displaypage</text>

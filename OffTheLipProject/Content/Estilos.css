@@ -6,6 +6,7 @@
 #contCarousel {
     display: flex;
     justify-content: center;
+    /*position: fixed;*/
 }
 
 #contCarousel > div {
@@ -15,7 +16,7 @@
 .contText {
     text-align: center;
     position: relative;
-    top: 50%;
+    /*top: 50%;*/
     left: 10%;
     width: 80%;
 }
@@ -58,34 +59,47 @@ input, textarea {
     color: black;
 }
 
-.grid-container {
+/*.grid-container {
     display: grid;
     text-align: center;
     grid-template-columns: auto auto ;
     padding: 10px;
+}*/
+
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-between;
 }
 
-.grid-item {
+.contenedor:after {
+    content: '';
+    flex: auto;
+}
+
+.flex-item {
+    width: 500px;
     padding: 50px;
-    margin: 35px;
+    margin: 50px;
 }
 
-.grid-item:hover {
+.flex-item:hover {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
 
-.grid-item > a {
+.flex-item > a {
     text-decoration: none;
     color: antiquewhite;
-    font-style: italic;
+    /*font-style: italic;*/
     font-size: large;
 }
 
-.grid-item > a:hover {
+.flex-item > a:hover {
     text-decoration: none;
     color: antiquewhite;
-    font-style: normal;
+    /*font-style: normal;*/
     font-size: large;
 }
 
@@ -127,8 +141,9 @@ input, textarea {
     height: 300px;
     background-image: url("/Content/img/Craig-Anderson.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: -600px;
+    /*background-size: cover;*/
+    background-position-y: -622px;
+    background-position-x: center;
 }
 
 #headerDocumentary > h2 {
@@ -208,4 +223,34 @@ input, textarea {
 
 #pagination > text {
     padding: 5px;
+}
+
+@media (min-width: 900px) {
+    .navbar > * {
+        width: 80%;
+    }
+}
+
+#footer {
+    list-style-type: none;
+    display: inline-flex;
+    margin-left: 8%;
+    font-size: 16px;
+}
+
+#footer > li {
+    margin-right: 25px;
+}
+
+    #footer > li > a {
+        text-decoration: none;
+        color: antiquewhite;
+        transition: 0.5s linear;
+        padding: 10px;
+    }
+
+#footer > li > a:hover {
+    text-decoration: none;
+    background-color: white;
+    color: black;
 }
