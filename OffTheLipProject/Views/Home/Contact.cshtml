@@ -1,24 +1,40 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 <hr />
 
+<link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/76a7554e0d.js" crossorigin="anonymous"></script>
 <link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
-@*<h3>@ViewBag.Message</h3>*@
 
-<address>
-    100 Main St <br />
-    Laguna Beach CA 92619 <br />
-    USA <br />
-    @*<abbr title="Phone">P:</abbr>*@
-    Phone: +1 714-504-5655
-</address>
+<section id="contContact">
+    <h2>Logo</h2>
+    <address>
+        100 Main St <br />
+        Laguna Beach CA 92619 <br />
+        USA <br />
+        Phone: +1 714-504-5655
+    </address>
 
+    <p>For all other business enquiries,<br /> please contact the appropriate department below.</p>
 
-<p>For all other business enquiries, please contact the appropriate department below.</p>
+    <address>
+        <strong>Support:</strong> <a href="mailto:Support@example.com">SupportOffthelip@gmail.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">MarketingOffthelip@gmail.com</a>
+    </address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">SupportOffthelip@gmail.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">MarketingOffthelip@gmail.com</a>
-</address>
+    <div class="media">
+        <a href="#">
+            <i class="fab fa-facebook fa-2x facebook"></i>
+        </a>
+
+        <a href="#">
+            <i class="fab fa-instagram fa-2x instagram"></i>
+        </a>
+
+        <a href="#">
+            <i class="fab fa-youtube fa-2x youtube"></i>
+        </a>
+    </div>
+</section>

@@ -3,26 +3,40 @@
     color: antiquewhite;
 }
 
+#contHome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #contCarousel {
     display: flex;
     justify-content: center;
-    /*position: fixed;*/
 }
 
 #contCarousel > div {
-    width: 60%;
+    width: 100%;
+}
+
+#contAbout {
+    background-image: url(/Content/img/SantaBarbaraBN.jpg);
+    background-size: 100% 100%;
+    height: 681px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
 }
 
 .contText {
-    text-align: center;
-    position: relative;
-    /*top: 50%;*/
-    left: 10%;
+    color: antiquewhite;
     width: 80%;
+    text-align: center;
+    padding-top: 20px;
 }
 
 .text {
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .removeLineBreak {
@@ -253,4 +267,78 @@ input, textarea {
     text-decoration: none;
     background-color: white;
     color: black;
+}
+
+/*.carousel .item {
+    position: fixed;
+    width: 75%;
+}*/
+
+#contShop {
+    background-image: url(/Content/img/Ocean.jpg);
+    background-size: 100% 100%;
+    height: 681px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+#middleShop {
+    margin-top: 100px;
+    text-align: center;
+}
+
+#middleShop > h1 {
+    font-size: 7rem;
+}
+
+#countdown {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin-top: 100px;
+}
+
+.media {
+    padding: 4px;
+    width: 150px;
+}
+
+.facebook {
+    width: 15px;
+    height: 10px;
+    color: #3b5998;
+    text-decoration: none;
+    padding: 20px;
+}
+
+.instagram {
+    width: 15px;
+    height: 10px;
+    color: #2A5B83;
+    text-decoration: none;
+    padding: 20px;
+}
+
+.youtube {
+    width: 15px;
+    height: 10px;
+    color: #c4302b;
+    text-decoration: none;
+    padding: 20px;
+}
+
+.facebook:hover, .instagram:hover, .youtube:hover {
+    text-decoration: none;
+    color: white;
+}
+
+#contContact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 150px;
 }

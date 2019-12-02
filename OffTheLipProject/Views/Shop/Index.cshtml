@@ -2,8 +2,82 @@
     ViewBag.Title = "Shop";
 }
 
-<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+<link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/76a7554e0d.js" crossorigin="anonymous"></script>
 
-<h2>@ViewBag.Title</h2>
-<hr />
+<div id="contShop">
+    <div id="middleShop">
+        <h1>Coming Soon</h1>
+        <h3>Our shop is under construction</h3>
+
+        <div id="countdown">
+            <div>
+                <span id="dias"></span>
+                <span>Days</span>
+            </div>
+
+            <div>
+                <span id="horas"></span>
+                <span>Hours</span>
+            </div>
+
+            <div>
+                <span id="min"></span>
+                <span>Minutes</span>
+            </div>
+
+            <div>
+                <span id="seg"></span>
+                <span>Seconds</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="media">
+        <a href="#">
+            <i class="fab fa-facebook fa-2x facebook"></i>
+        </a>
+
+        <a href="#">
+            <i class="fab fa-instagram fa-2x instagram"></i>
+        </a>
+
+        <a href="#">
+            <i class="fab fa-youtube fa-2x youtube"></i>
+        </a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var end = new Date(2020,1,15);
+
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+
+            clearInterval(timer);
+            document.getElementById('countdown').innerHTML = 'EXPIRED!';
+
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance % _minute) / _second);
+
+        document.getElementById('dias').innerHTML = days ;
+        document.getElementById('horas').innerHTML = hours;
+        document.getElementById('min').innerHTML = minutes;
+        document.getElementById('seg').innerHTML = seconds;
+    }
+
+    timer = setInterval(showRemaining, 1000);
+</script>
 
