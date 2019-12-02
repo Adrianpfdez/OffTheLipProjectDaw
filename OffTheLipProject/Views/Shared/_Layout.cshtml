@@ -31,8 +31,6 @@
                         <li>@Html.ActionLink("Cinema", "Index", "Documentary")</li>
                         <li>@Html.ActionLink("Hardware", "Index", "Hardware")</li>
                         <li>@Html.ActionLink("Shop", "Index", "Shop")</li>
-                        @*<li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                         @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
@@ -44,10 +42,8 @@
         </div>
         <div class="container body-content">
             @RenderBody()
-
         </div>
         <footer>
-            @*<p>&copy; @DateTime.Now.Year - Off The Lip </p>*@
             <ul id="footer">
                 <li>&copy; @DateTime.Now.Year - Off The Lip </li>
                 <li>@Html.ActionLink("About", "About", "Home")</li>

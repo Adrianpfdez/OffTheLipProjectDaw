@@ -12,7 +12,7 @@ footer {
     bottom: 0;*/
     /*left: 7%;*/
     width: 90%;
-    margin-top: 10%;
+    margin-top: 2%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,8 +21,8 @@ footer {
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 25px;
-    position: relative;
-    height: calc(100vh - 110px);
+    /*position: relative;
+    height: calc(100vh - 110px);*/
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -39,6 +39,7 @@ select{
 }
 
 .headerLayout {
+    color: antiquewhite;
     height: 74px;
     padding-top: 14px;  
 }
