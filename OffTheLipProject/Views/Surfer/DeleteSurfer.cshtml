@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "DeleteSurfer";
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+
+<h2>Surfer</h2>
+<hr />
+
+<div>
+    <h3>Delete Surfer</h3>
+
+    @using (Html.BeginForm("DeleteSurfer", "Surfer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <br />
+        @Html.TextBox("surferName", "", new { @class = "textboxSearch", @placeholder = "Surfer name" })
+        <input type="submit" id="submitSearch" value="Delete" class="btn btn-default" />
+    }
+</div>

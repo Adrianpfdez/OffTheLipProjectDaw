@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "DeleteHardware";
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+
+<h2>Hardware</h2>
+<hr />
+
+<div>
+    <h4>Delete Hardware</h4>
+
+    @using (Html.BeginForm("DeleteHardware", "Hardware", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <br />
+        @Html.TextBox("hardwareName", "", new { @class = "textboxSearch", @placeholder = "Hardware name" })
+        <input type="submit" id="submitSearch" value="Delete" class="btn btn-default" />
+    }
+</div>

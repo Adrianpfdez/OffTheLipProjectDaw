@@ -7,19 +7,41 @@
 <h2>@ViewBag.Title</h2>
 <hr />
 
-<div>
-    <ol>
-        <li>@Html.ActionLink("Create News", "CreateNews", "News")</li>
-        <li>@Html.ActionLink("Create Video", "CreatePost", "Documentary")</li>
-        <li>@Html.ActionLink("Create Hardware", "CreateHardware", "Hardware")</li>
-        <li>@Html.ActionLink("Create Surfer", "CreateSurfer", "Surfer")</li>
-    </ol>
+<div id="admin">
+    <div>
+        <h3>Create</h3>
+        <ol>
+            <li>@Html.ActionLink("Create News", "CreateNews", "News")</li>
+            <li>@Html.ActionLink("Create Documentary", "CreatePost", "Documentary")</li>
+            <li>@Html.ActionLink("Create Hardware", "CreateHardware", "Hardware")</li>
+            <li>@Html.ActionLink("Create Surfer", "CreateSurfer", "Surfer")</li>
+        </ol>
+    </div>
 
-    @*<ol>
-        <li>@Html.ActionLink("Edit News", "EditNews", "News")</li>
-    </ol>*@
+    <div>
+        <h3>Edit</h3>
+        <ol>
+            <li>@Html.ActionLink("Edit News", "EditNews", "News")</li>
+            <li>@Html.ActionLink("Edit Documentary", "EditDocumentary", "Documentary")</li>
+            <li>@Html.ActionLink("Edit Hardware", "EditHardware", "Hardware")</li>
+            <li>@Html.ActionLink("Edit Surfer", "EditSurfer", "Surfer")</li>
+        </ol>
+    </div>
 
-    <ol>
-        <li>@Html.ActionLink("Create Admin User", "CreateAdmin", "Admin")</li>
-    </ol>
+    <div>
+        <h3>Delete</h3>
+        <ol>
+            <li>@Html.ActionLink("Delete News", "DeleteNews", "News")</li>
+            <li>@Html.ActionLink("Delete Documentary", "DeleteDocumentary", "Documentary")</li>
+            <li>@Html.ActionLink("Delete Hardware", "DeleteHardware", "Hardware")</li>
+            <li>@Html.ActionLink("Delete Surfer", "DeleteSurfer", "Surfer")</li>
+        </ol>
+    </div>
+
+    <div>
+        <h3>User Admin</h3>
+        <ol>
+            <li>@Html.ActionLink("Create Admin User", "CreateAdmin", "Admin")</li>
+        </ol>
+    </div>
 </div>

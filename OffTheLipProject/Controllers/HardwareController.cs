@@ -60,6 +60,31 @@ namespace OffTheLipProject.Controllers
             return View();
         }
 
+        public ActionResult DeleteHardware()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteHardware(string hardwareName)
+        {
+            var hardware = db.Hardwares.Where(a => a.Name == hardwareName).FirstOrDefault();
+
+            if (hardware != null)
+            {
+                db.Hardwares.Remove(hardware);
+                db.SaveChanges();
+                TempData["Message"] = string.Format("Hardware was deleted successfully");
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                TempData["Message"] = string.Format("ERROR, hardware wasnt deleted");
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
         public ActionResult DisplayHardware(int? DocId)
         {
             if (!DocId.HasValue)

@@ -54,5 +54,30 @@ namespace OffTheLipProject.Controllers
             TempData["Message"] = string.Format("ERROR, Surfer wasnt created");
             return RedirectToAction("Index", "Home"); 
         }
+
+        public ActionResult DeleteSurfer()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteSurfer(string surferName)
+        {
+            var surfer = db.Surfers.Where(a => a.Name == surferName).FirstOrDefault();
+
+            if (surfer != null)
+            {
+                db.Surfers.Remove(surfer);
+                db.SaveChanges();
+                TempData["Message"] = string.Format("Surfer was deleted successfully");
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                TempData["Message"] = string.Format("ERROR, surfer wasnt deleted");
+                return RedirectToAction("Index", "Home");
+            }
+        }
     }
 }

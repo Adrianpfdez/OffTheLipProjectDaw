@@ -89,6 +89,31 @@ namespace OffTheLipProject.Controllers
         //    }
         //}
 
+        public ActionResult DeleteNews()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteNews(string noticeName)
+        {
+            var notice = db.News.Where(a => a.Name == noticeName).FirstOrDefault();
+
+            if (notice != null)
+            {
+                db.News.Remove(notice);
+                db.SaveChanges();
+                TempData["Message"] = string.Format("Notice was deleted successfully");
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                TempData["Message"] = string.Format("ERROR, notice wasnt deleted");
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
         public ActionResult DisplayNews(int? DocId)
         {
             if (!DocId.HasValue)

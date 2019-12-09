@@ -62,6 +62,31 @@ namespace OffTheLipProject.Controllers
             return View(model);
         }
 
+        public ActionResult DeleteDocumentary()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteDocumentary(string videoName)
+        {
+            var documentary = db.Documentaries.Where(a => a.Name == videoName).FirstOrDefault();
+
+            if (documentary != null)
+            {
+                db.Documentaries.Remove(documentary);
+                db.SaveChanges();
+                TempData["Message"] = string.Format("Documentary was deleted successfully");
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                TempData["Message"] = string.Format("ERROR, Documentary wasnt deleted");
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
         public ActionResult DisplayPost(int? DocId)
         {
             if (!DocId.HasValue)

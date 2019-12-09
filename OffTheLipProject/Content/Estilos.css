@@ -350,3 +350,17 @@ input, textarea {
 #register {
     margin-bottom: 11%;
 }
+
+#admin {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 25%;
+}
+
+#admin > div {
+    padding-left: 40px;
+}
+
+#admin > div > h3 {
+    text-align: center;
+}

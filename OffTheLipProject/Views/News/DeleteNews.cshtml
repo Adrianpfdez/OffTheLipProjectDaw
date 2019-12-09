@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "DeleteNews";
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+
+<h2>News</h2>
+<hr />
+
+<div>
+    <h3>Delete News</h3>
+    
+    @using (Html.BeginForm("DeleteNews", "News", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <br />
+        @Html.TextBox("noticeName", "", new { @class = "textboxSearch", @placeholder = "News name" })
+        <input type="submit" id="submitSearch" value="Delete" class="btn btn-default" />
+    }
+</div>
