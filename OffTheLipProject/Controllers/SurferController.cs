@@ -55,6 +55,47 @@ namespace OffTheLipProject.Controllers
             return RedirectToAction("Index", "Home"); 
         }
 
+        public ActionResult SearchSurfer()
+        {
+            return View();
+        }
+
+        public ActionResult EditSurfer(string surferName)
+        {
+            if (surferName != "")
+            {
+                var surfer = db.Surfers.Where(a => a.Name == surferName).FirstOrDefault();
+
+                return View(surfer);
+            }
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+        }
+
+        public ActionResult SaveChanges(Surfer model, int id)
+        {
+            var surfer = db.Surfers.Where(a => a.Id == id).FirstOrDefault();
+
+            if (surfer == null)
+            {
+                TempData["Message"] = string.Format("ERROR, surfer wasnt edited ");
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                surfer.Name = model.Name;
+                surfer.Natinality = model.Natinality;
+                surfer.Image = model.Image;
+                surfer.Stance = model.Stance;
+                surfer.Competitor = model.Competitor;
+
+                db.SaveChanges();
+
+                TempData["Message"] = string.Format("Surfer was edited successfully");
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
         public ActionResult DeleteSurfer()
         {
             return View();

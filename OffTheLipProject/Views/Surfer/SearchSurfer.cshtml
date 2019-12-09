@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "DeleteSurfer";
+    ViewBag.Title = "SearchSurfer";
 }
 
 <link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
@@ -9,14 +9,15 @@
 <hr />
 
 <div class="searchAdmin">
-    <h3>Delete Surfer</h3>
+    <h3>Surfer Search</h3>
 
-    @using (Html.BeginForm("DeleteSurfer", "Surfer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("EditSurfer", "Surfer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary("", new { @class = "text-danger" })
         <br />
         @Html.TextBox("surferName", "", new { @class = "textboxSearch", @placeholder = "Surfer name" })
-        <input type="submit" id="submitSearch" value="Delete" class="btn btn-default" />
+        <input type="submit" id="submitSearch" value="Edit" class="btn btn-default" />
     }
 </div>
+

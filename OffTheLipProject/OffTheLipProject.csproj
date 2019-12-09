@@ -359,6 +359,8 @@
     <Content Include="Views\Documentary\EditDocumentary.cshtml" />
     <Content Include="Views\Hardware\SearchHardware.cshtml" />
     <Content Include="Views\Hardware\EditHardware.cshtml" />
+    <Content Include="Views\Surfer\SearchSurfer.cshtml" />
+    <Content Include="Views\Surfer\EditSurfer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

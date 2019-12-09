@@ -9,11 +9,12 @@
 <h2>@ViewBag.Title</h2>
 <hr />
 
-<div>
+<div style="margin-bottom: 6%;">
     @using (Html.BeginForm("AdminRegister", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
-        <h4> Create new account:</h4>
+        <h4>Create new account:</h4>
+        <br />
 
         @Html.ValidationSummary("", new { @class = "text-danger" })
 

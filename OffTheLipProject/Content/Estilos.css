@@ -364,3 +364,7 @@ input, textarea {
 #admin > div > h3 {
     text-align: center;
 }
+
+.searchAdmin {
+    margin-bottom: 30%;
+}
