@@ -13,6 +13,8 @@ namespace OffTheLipProject.Models.ModelOTL
         public DateTime ReleaseDate { get; set; }
         public int Price { get; set; }
         public string Image { get; set; }
+        public string Url { get; set; }
+        public string UrlRedirect { get; set; }
         public string SurferName { get; set; }
     }
 }

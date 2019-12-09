@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "SearchHardware";
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+
+<h2>Hardware</h2>
+<hr />
+
+<div>
+    <h3>Hardware Search</h3>
+
+    @using (Html.BeginForm("EditHardware", "Hardware", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <br />
+        @Html.TextBox("hardwareName", "", new { @class = "textboxSearch", @placeholder = "Hardware name" })
+        <input type="submit" id="submitSearch" value="Edit" class="btn btn-default" />
+    }
+</div>

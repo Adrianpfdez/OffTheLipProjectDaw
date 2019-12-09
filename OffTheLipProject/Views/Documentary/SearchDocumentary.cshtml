@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "SearchDocumentary";
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+
+<h2>Documentary</h2>
+<hr />
+
+<div>
+    <h3>Documentary Search</h3>
+
+    @using (Html.BeginForm("EditDocumentary", "Documentary", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <br />
+        @Html.TextBox("documentaryName", "", new { @class = "textboxSearch", @placeholder = "Documentary name" })
+        <input type="submit" id="submitSearch" value="Edit" class="btn btn-default" />
+    }
+</div>
+

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "SearchNews";
+}
+
+<link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
+
+<h2>News</h2>
+<hr />
+
+<div>
+    <h3>News Search</h3>
+
+    @using (Html.BeginForm("EditNews", "News", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <br />
+        @Html.TextBox("noticeName", "", new { @class = "textboxSearch", @placeholder = "News name" })
+        <input type="submit" id="submitSearch" value="Edit" class="btn btn-default" />
+    }
+</div>

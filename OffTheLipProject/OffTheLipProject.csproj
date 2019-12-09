@@ -354,6 +354,11 @@
     <Content Include="Views\Documentary\DeleteDocumentary.cshtml" />
     <Content Include="Views\Hardware\DeleteHardware.cshtml" />
     <Content Include="Views\Surfer\DeleteSurfer.cshtml" />
+    <Content Include="Views\News\SearchNews.cshtml" />
+    <Content Include="Views\Documentary\SearchDocumentary.cshtml" />
+    <Content Include="Views\Documentary\EditDocumentary.cshtml" />
+    <Content Include="Views\Hardware\SearchHardware.cshtml" />
+    <Content Include="Views\Hardware\EditHardware.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

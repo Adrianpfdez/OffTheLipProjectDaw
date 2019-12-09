@@ -60,6 +60,76 @@ namespace OffTheLipProject.Controllers
             return View();
         }
 
+        public ActionResult SearchHardware()
+        {
+            return View();
+        }
+
+        public ActionResult EditHardware(string hardwareName)
+        {
+            if (hardwareName != "")
+            {
+                var hardware = db.Hardwares.Where(a => a.Name == hardwareName).FirstOrDefault();
+                var surfer = hardware.Surfers.FirstOrDefault();
+
+                HardwareSurferViewModel hardwareVM;
+
+                if (surfer != null)
+                {
+                    hardwareVM = new HardwareSurferViewModel
+                    {
+                        Id = hardware.Id,
+                        Name = hardware.Name,
+                        Description = hardware.Description,
+                        ReleaseDate = hardware.ReleaseDate,
+                        Price = hardware.Price,
+                        Image = hardware.Image,
+                        SurferName = surfer.Name
+                    };
+                }
+                else
+                {
+                    hardwareVM = new HardwareSurferViewModel
+                    {
+                        Id = hardware.Id,
+                        Name = hardware.Name,
+                        Description = hardware.Description,
+                        ReleaseDate = hardware.ReleaseDate,
+                        Price = hardware.Price,
+                        Image = hardware.Image
+                    };
+                }
+
+                return View(hardwareVM);
+            }
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+        }
+
+        public ActionResult SaveChanges(HardwareSurferViewModel model, int id)
+        {
+            var hardwares = db.Hardwares.Where(a => a.Id == id).FirstOrDefault();
+
+            if (hardwares == null)
+            {
+                TempData["Message"] = string.Format("ERROR, hardware wasnt edited ");
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                hardwares.Name = model.Name;
+                hardwares.Description = model.Description;
+                hardwares.ReleaseDate = model.ReleaseDate;
+                hardwares.Price = model.Price;
+                hardwares.Image = model.Image;
+
+                db.SaveChanges();
+
+                TempData["Message"] = string.Format("Hardware was edited successfully");
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
         public ActionResult DeleteHardware()
         {
             return View();

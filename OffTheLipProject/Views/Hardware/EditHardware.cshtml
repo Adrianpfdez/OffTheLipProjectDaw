@@ -1,15 +1,16 @@
-﻿@model OffTheLipProject.Models.ModelOTL.NewsSurferViewModel
+﻿@model OffTheLipProject.Models.ModelOTL.HardwareSurferViewModel
+
 @{
-    ViewBag.Title = "EditNews";
+    ViewBag.Title = "EditHardware";
 }
 
 <link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
 
-<h2>News</h2>
+<h2>Hardware</h2>
 <hr />
 
 <div>
-    @using (Html.BeginForm("SaveChanges", "News", new { @id = @Model.Id }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("SaveChanges", "Hardware", new { @id = @Model.Id }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
 
@@ -34,10 +35,10 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.ReleaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.ReleaseDate, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -55,9 +56,10 @@
                 </div>
             </div>
         </div>
-    }
+     }
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

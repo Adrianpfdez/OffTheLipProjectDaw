@@ -61,33 +61,72 @@ namespace OffTheLipProject.Controllers
             return View(model);
         }
 
-        public List<News> SearchNew(string nameNew)
+        public ActionResult SearchNews()
         {
-            var notice = db.News.Where(a => a.Name == nameNew);
+            return View();
+        }
 
-            if (notice != null){
-                return notice.ToList();
+        public ActionResult EditNews(string noticeName)
+        {
+            if (noticeName != "")
+            {
+                var notice = db.News.Where(a => a.Name == noticeName).FirstOrDefault();
+                var surfer = notice.Surfers.FirstOrDefault();
+
+                NewsSurferViewModel noticeVM;
+
+                if (surfer != null)
+                {
+                    noticeVM = new NewsSurferViewModel
+                    {
+                        Id = notice.Id,
+                        Name = notice.Name,
+                        Description = notice.Description,
+                        Location = notice.Location,
+                        Image = notice.Image,
+                        SurferName = surfer.Name
+                    };
+                }
+                else
+                {
+                    noticeVM = new NewsSurferViewModel
+                    {
+                        Id = notice.Id,
+                        Name = notice.Name,
+                        Description = notice.Description,
+                        Location = notice.Location,
+                        Image = notice.Image
+                    };
+                }
+
+                return View(noticeVM);
+            }
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+        }
+
+        public ActionResult SaveChanges(NewsSurferViewModel model, int id)
+        {
+            var news = db.News.Where(a => a.Id == id).FirstOrDefault();
+
+            if (news == null)
+            {
+                TempData["Message"] = string.Format("ERROR, notice wasnt edited ");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
-                return db.News.ToList();
+                news.Name = model.Name;
+                news.Description = model.Description;
+                news.Location = model.Location;
+                news.Image = model.Image;
+
+                db.SaveChanges();
+                
+                TempData["Message"] = string.Format("Notice was edited successfully");
+                return RedirectToAction("Index", "Home");
             }
         }
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult EditNews(NewsSurferViewModel model)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(model);
-        //    }
-
-        //    if (newsId != null)
-        //    {
-
-        //    }
-        //}
 
         public ActionResult DeleteNews()
         {

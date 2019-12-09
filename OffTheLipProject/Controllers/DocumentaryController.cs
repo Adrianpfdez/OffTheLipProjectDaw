@@ -62,6 +62,76 @@ namespace OffTheLipProject.Controllers
             return View(model);
         }
 
+        public ActionResult SearchDocumentary()
+        {
+            return View();
+        }
+
+        public ActionResult EditDocumentary(string documentaryName)
+        {
+            if (documentaryName != "")
+            {
+                var documentary = db.Documentaries.Where(a => a.Name == documentaryName).FirstOrDefault();
+                var surfer = documentary.Surfers.FirstOrDefault();
+
+                DocumentarySurferViewModel documentaryVM;
+
+                if (surfer != null)
+                {
+                    documentaryVM = new DocumentarySurferViewModel
+                    {
+                        Id = documentary.Id,
+                        Name = documentary.Name,
+                        Description = documentary.Description,
+                        Location = documentary.Location,
+                        Url = documentary.Url,
+                        UrlRedirect = documentary.UrlRedirect,
+                        SurferName = surfer.Name
+                    };
+                }
+                else
+                {
+                    documentaryVM = new DocumentarySurferViewModel
+                    {
+                        Id = documentary.Id,
+                        Name = documentary.Name,
+                        Description = documentary.Description,
+                        Location = documentary.Location,
+                        Url = documentary.Url,
+                        UrlRedirect = documentary.UrlRedirect,
+                    };
+                }
+
+                return View(documentaryVM);
+            }
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+        }
+
+        public ActionResult SaveChanges(DocumentarySurferViewModel model, int id)
+        {
+            var documentarries = db.Documentaries.Where(a => a.Id == id).FirstOrDefault();
+
+            if (documentarries == null)
+            {
+                TempData["Message"] = string.Format("ERROR, documentary wasnt edited ");
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                documentarries.Name = model.Name;
+                documentarries.Description = model.Description;
+                documentarries.Location = model.Location;
+                documentarries.Url = model.Url;
+                documentarries.UrlRedirect = model.UrlRedirect;
+
+                db.SaveChanges();
+
+                TempData["Message"] = string.Format("Documentart was edited successfully");
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
         public ActionResult DeleteDocumentary()
         {
             return View();
