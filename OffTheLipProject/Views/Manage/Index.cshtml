@@ -9,46 +9,29 @@
 <p class="text-success">@ViewBag.StatusMessage</p>
 <hr />
 
-<div>
-    <p class="removeLineBreak">Password:</p>
-    [
-    @if (Model.HasPassword)
-    {
-        @Html.ActionLink("Change password", "ChangePassword")
-    }
-    else
-    {
-        @Html.ActionLink("Create", "SetPassword")
-    }
-    ]
-</div>
+<div style="margin-bottom:15%;">
+    <div>
+        <p class="removeLineBreak">Password:</p>
+        [
+        @if (Model.HasPassword)
+        {
+            @Html.ActionLink("Change password", "ChangePassword")
+        }
+        else
+        {
+            @Html.ActionLink("Create", "SetPassword")
+        }
+        ]
+    </div>
 
-@*<div>
-    <dl class="dl-horizontal">
+    <br />
+    <br />
+    <br />
 
-        <dt>Password:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-        </dd>
-    </dl>
-</div>*@
-
-<br />
-<br />
-<br />
-
-<div>
-    <h3>User Information</h3>
-    <hr />
-    <div>@{Html.RenderAction("UserInformation", "Account");}</div>
-    <div>@Html.ActionLink("Edit", "Edit", "Account") | @Html.ActionLink("Delete", "Delete", "Account")</div>
+    <div>
+        <h3>User Information</h3>
+        <hr />
+        <div>@{Html.RenderAction("UserInformation", "Account");}</div>
+        <div>@Html.ActionLink("Edit", "Edit", "Account") | @Html.ActionLink("Delete", "Delete", "Account")</div>
+    </div>
 </div>

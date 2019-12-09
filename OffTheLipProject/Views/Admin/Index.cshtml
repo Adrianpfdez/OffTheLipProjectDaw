@@ -7,9 +7,19 @@
 <h2>@ViewBag.Title</h2>
 <hr />
 
-<ol>
-    <li>@Html.ActionLink("Create News", "CreateNews", "News")</li>
-    <li>@Html.ActionLink("Create Video", "CreatePost", "Documentary")</li>
-    <li>@Html.ActionLink("Create Hardware", "CreateHardware", "Hardware")</li>
-    <li>@Html.ActionLink("Create Surfer", "CreateSurfer", "Surfer")</li>
-</ol>
+<div>
+    <ol>
+        <li>@Html.ActionLink("Create News", "CreateNews", "News")</li>
+        <li>@Html.ActionLink("Create Video", "CreatePost", "Documentary")</li>
+        <li>@Html.ActionLink("Create Hardware", "CreateHardware", "Hardware")</li>
+        <li>@Html.ActionLink("Create Surfer", "CreateSurfer", "Surfer")</li>
+    </ol>
+
+    @*<ol>
+        <li>@Html.ActionLink("Edit News", "EditNews", "News")</li>
+    </ol>*@
+
+    <ol>
+        <li>@Html.ActionLink("Create Admin User", "CreateAdmin", "Admin")</li>
+    </ol>
+</div>

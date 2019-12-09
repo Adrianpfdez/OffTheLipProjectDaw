@@ -1,19 +1,22 @@
 ﻿@model OffTheLipProject.Models.RegisterViewModel
+
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Admin";
 }
+
 <link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
 
-<div id="register">
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+<h2>@ViewBag.Title</h2>
+<hr />
+
+<div>
+    @using (Html.BeginForm("AdminRegister", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
-        <h2> Create new account</h2>
-        <hr />
+        <h4> Create new account:</h4>
 
         @Html.ValidationSummary("", new { @class = "text-danger" })
 
-        // NOMBRE
         <div class="form-group">
             @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
@@ -21,7 +24,6 @@
             </div>
         </div>
 
-        // APELLIDO
         <div class="form-group">
             @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
@@ -29,8 +31,6 @@
             </div>
         </div>
 
-
-        // NACIONALIDAD
         <div class="form-group">
             @Html.LabelFor(m => m.Nationality, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">

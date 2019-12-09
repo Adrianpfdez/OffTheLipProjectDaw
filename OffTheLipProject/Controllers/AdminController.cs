@@ -13,5 +13,10 @@ namespace OffTheLipProject.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateAdmin()
+        {
+            return View();
+        }
     }
 }

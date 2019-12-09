@@ -270,13 +270,30 @@ namespace OffTheLipProject.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Admin");
                 }
                 AddErrors(result);
             }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AdminRegister(RegisterViewModel model)
+        {
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, LastName = model.LastName, Nationality = model.Nationality };
+            var result = await UserManager.CreateAsync(user, model.Password);
+
+            if(result.Succeeded){
+                await UserManager.AddToRoleAsync(user.Id, "Admin");
+                TempData["Message"] = string.Format("Admin User was created successfully");
+                return RedirectToAction("Index", "Home");
+            }
+
+            TempData["Message"] = string.Format("ERROR, Admin User wasnt created");
+            return RedirectToAction("Index", "Home");
         }
 
         //

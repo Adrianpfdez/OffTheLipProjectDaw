@@ -342,3 +342,11 @@ input, textarea {
     align-items: center;
     margin-bottom: 150px;
 }
+
+.row {
+    margin-bottom: 20%;
+}
+
+#register {
+    margin-bottom: 11%;
+}

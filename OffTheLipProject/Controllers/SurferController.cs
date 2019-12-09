@@ -46,11 +46,12 @@ namespace OffTheLipProject.Controllers
 
                 if (result > 0)
                 {
-                    TempData["SurferMessage"] = string.Format("Surfer was created successfully");
-                    RedirectToAction("Index","Home"); 
+                    TempData["Message"] = string.Format("Surfer was created successfully");
+                    return RedirectToAction("Index", "Home");
                 }
             }
-            TempData["SurferMessage"] = string.Format("ERROR, Surfer wasn't created");
+
+            TempData["Message"] = string.Format("ERROR, Surfer wasnt created");
             return RedirectToAction("Index", "Home"); 
         }
     }

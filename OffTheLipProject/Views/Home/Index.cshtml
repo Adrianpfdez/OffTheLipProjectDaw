@@ -71,11 +71,11 @@
 <br />
 <br />
 
-@if (TempData["SurferMessage"] != null)
+@if (TempData["Message"] != null)
 {
     <script type="text/javascript">
         window.onload = function () {
-            alert("@TempData["SurferMessage"]");
+            alert("@TempData["Message"]");
         };
     </script>
 }

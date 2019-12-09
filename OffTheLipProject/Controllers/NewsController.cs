@@ -39,7 +39,7 @@ namespace OffTheLipProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SetNew(NewsSurferViewModel model)
+        public ActionResult SetNews(NewsSurferViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -60,6 +60,34 @@ namespace OffTheLipProject.Controllers
             }
             return View(model);
         }
+
+        public List<News> SearchNew(string nameNew)
+        {
+            var notice = db.News.Where(a => a.Name == nameNew);
+
+            if (notice != null){
+                return notice.ToList();
+            }
+            else
+            {
+                return db.News.ToList();
+            }
+        }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult EditNews(NewsSurferViewModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+
+        //    if (newsId != null)
+        //    {
+
+        //    }
+        //}
 
         public ActionResult DisplayNews(int? DocId)
         {
