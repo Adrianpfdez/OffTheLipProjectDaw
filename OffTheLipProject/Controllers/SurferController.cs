@@ -51,7 +51,7 @@ namespace OffTheLipProject.Controllers
                 }
             }
 
-            TempData["Message"] = string.Format("ERROR, Surfer wasnt created");
+            TempData["Message"] = string.Format("ERROR, Surfer was not created");
             return RedirectToAction("Index", "Home"); 
         }
 
@@ -62,14 +62,16 @@ namespace OffTheLipProject.Controllers
 
         public ActionResult EditSurfer(string surferName)
         {
-            if (surferName != "")
-            {
-                var surfer = db.Surfers.Where(a => a.Name == surferName).FirstOrDefault();
+            var surfer = db.Surfers.Where(a => a.Name == surferName).FirstOrDefault();
 
+            if (surfer != null)
+            {
                 return View(surfer);
             }
 
-            return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            TempData["Message"] = string.Format("ERROR, surfer does not exist");
+            return RedirectToAction("Index", "Home");
+            //return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
         }
 
         public ActionResult SaveChanges(Surfer model, int id)
@@ -78,7 +80,7 @@ namespace OffTheLipProject.Controllers
 
             if (surfer == null)
             {
-                TempData["Message"] = string.Format("ERROR, surfer wasnt edited ");
+                TempData["Message"] = string.Format("ERROR, surfer was not edited ");
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -116,7 +118,7 @@ namespace OffTheLipProject.Controllers
             }
             else
             {
-                TempData["Message"] = string.Format("ERROR, surfer wasnt deleted");
+                TempData["Message"] = string.Format("ERROR, surfer was not deleted");
                 return RedirectToAction("Index", "Home");
             }
         }

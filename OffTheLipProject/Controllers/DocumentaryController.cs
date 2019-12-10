@@ -69,9 +69,10 @@ namespace OffTheLipProject.Controllers
 
         public ActionResult EditDocumentary(string documentaryName)
         {
-            if (documentaryName != "")
+            var documentary = db.Documentaries.Where(a => a.Name == documentaryName).FirstOrDefault();
+
+            if (documentary != null)
             {
-                var documentary = db.Documentaries.Where(a => a.Name == documentaryName).FirstOrDefault();
                 var surfer = documentary.Surfers.FirstOrDefault();
 
                 DocumentarySurferViewModel documentaryVM;
@@ -105,7 +106,9 @@ namespace OffTheLipProject.Controllers
                 return View(documentaryVM);
             }
 
-            return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            TempData["Message"] = string.Format("ERROR, documentary does not exist");
+            return RedirectToAction("Index", "Home");
+            //return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
         }
 
         public ActionResult SaveChanges(DocumentarySurferViewModel model, int id)
@@ -114,7 +117,7 @@ namespace OffTheLipProject.Controllers
 
             if (documentarries == null)
             {
-                TempData["Message"] = string.Format("ERROR, documentary wasnt edited ");
+                TempData["Message"] = string.Format("ERROR, documentary was not edited ");
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -127,7 +130,7 @@ namespace OffTheLipProject.Controllers
 
                 db.SaveChanges();
 
-                TempData["Message"] = string.Format("Documentart was edited successfully");
+                TempData["Message"] = string.Format("Documentary was edited successfully");
                 return RedirectToAction("Index", "Home");
             }
         }
@@ -152,7 +155,7 @@ namespace OffTheLipProject.Controllers
             }
             else
             {
-                TempData["Message"] = string.Format("ERROR, Documentary wasnt deleted");
+                TempData["Message"] = string.Format("ERROR, documentary was not deleted");
                 return RedirectToAction("Index", "Home");
             }
         }

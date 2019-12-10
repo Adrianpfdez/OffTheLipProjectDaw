@@ -68,9 +68,10 @@ namespace OffTheLipProject.Controllers
 
         public ActionResult EditNews(string noticeName)
         {
-            if (noticeName != "")
+            var notice = db.News.Where(a => a.Name == noticeName).FirstOrDefault();
+
+            if (notice != null)
             {
-                var notice = db.News.Where(a => a.Name == noticeName).FirstOrDefault();
                 var surfer = notice.Surfers.FirstOrDefault();
 
                 NewsSurferViewModel noticeVM;
@@ -102,7 +103,9 @@ namespace OffTheLipProject.Controllers
                 return View(noticeVM);
             }
 
-            return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            TempData["Message"] = string.Format("ERROR, notice does not exist ");
+            return RedirectToAction("Index", "Home");
+            //return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
         }
 
         public ActionResult SaveChanges(NewsSurferViewModel model, int id)
@@ -111,7 +114,7 @@ namespace OffTheLipProject.Controllers
 
             if (news == null)
             {
-                TempData["Message"] = string.Format("ERROR, notice wasnt edited ");
+                TempData["Message"] = string.Format("ERROR, notice was not edited ");
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -148,7 +151,7 @@ namespace OffTheLipProject.Controllers
             }
             else
             {
-                TempData["Message"] = string.Format("ERROR, notice wasnt deleted");
+                TempData["Message"] = string.Format("ERROR, notice was not deleted");
                 return RedirectToAction("Index", "Home");
             }
         }

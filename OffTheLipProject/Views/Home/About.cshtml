@@ -4,13 +4,17 @@
 
 <link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
 
-<h2> @ViewBag.Title</h2>
-<hr />
+@*<h2> @ViewBag.Title</h2>
+<hr />*@
 @*<h3>@ViewBag.Message</h3>*@
 
 <section id="contAbout">
     <div class="contText">
-        <h2>Logo...</h2>
+        <a href='@Url.Action("Index", "Home")'>
+            <img src='@Url.Content("~/Content/img/OffTheLip_V1.jpg")' width="180" height="90" />
+        </a>
+        <br />
+        <br />
         <p class="text">
             In Off The Lip we usually use a direct and clear language... maybe sometimes even too much.
             That is why we want to tell you who we are and what we offer you without too many formalities.

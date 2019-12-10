@@ -1,15 +1,19 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title</h2>
-<hr />
+@*<h2>@ViewBag.Title</h2>
+<hr />*@
 
 <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/76a7554e0d.js" crossorigin="anonymous"></script>
 <link href="~/Content/Estilos.css" rel="stylesheet" type="text/css" />
 
 <section id="contContact">
-    <h2>Logo</h2>
+    <a href='@Url.Action("Index", "Home")'>
+        <img src='@Url.Content("~/Content/img/OffTheLip_V1.jpg")' width="180" height="90" />
+    </a>
+    <br />
+
     <address>
         100 Main St <br />
         Laguna Beach CA 92619 <br />
@@ -25,15 +29,15 @@
     </address>
 
     <div class="media">
-        <a href="#">
+        <a href="https://www.facebook.com/">
             <i class="fab fa-facebook fa-2x facebook"></i>
         </a>
 
-        <a href="#">
+        <a href="https://www.instagram.com/">
             <i class="fab fa-instagram fa-2x instagram"></i>
         </a>
 
-        <a href="#">
+        <a href="https://www.youtube.com/">
             <i class="fab fa-youtube fa-2x youtube"></i>
         </a>
     </div>

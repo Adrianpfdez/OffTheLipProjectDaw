@@ -67,9 +67,10 @@ namespace OffTheLipProject.Controllers
 
         public ActionResult EditHardware(string hardwareName)
         {
-            if (hardwareName != "")
+            var hardware = db.Hardwares.Where(a => a.Name == hardwareName).FirstOrDefault();
+
+            if (hardware != null)
             {
-                var hardware = db.Hardwares.Where(a => a.Name == hardwareName).FirstOrDefault();
                 var surfer = hardware.Surfers.FirstOrDefault();
 
                 HardwareSurferViewModel hardwareVM;
@@ -103,7 +104,9 @@ namespace OffTheLipProject.Controllers
                 return View(hardwareVM);
             }
 
-            return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            TempData["Message"] = string.Format("ERROR, hardware does not exist ");
+            return RedirectToAction("Index", "Home");
+            //return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
         }
 
         public ActionResult SaveChanges(HardwareSurferViewModel model, int id)
@@ -112,7 +115,7 @@ namespace OffTheLipProject.Controllers
 
             if (hardwares == null)
             {
-                TempData["Message"] = string.Format("ERROR, hardware wasnt edited ");
+                TempData["Message"] = string.Format("ERROR, hardware was not edited ");
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -150,7 +153,7 @@ namespace OffTheLipProject.Controllers
             }
             else
             {
-                TempData["Message"] = string.Format("ERROR, hardware wasnt deleted");
+                TempData["Message"] = string.Format("ERROR, hardware was not deleted");
                 return RedirectToAction("Index", "Home");
             }
         }
