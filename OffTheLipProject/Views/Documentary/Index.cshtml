@@ -47,26 +47,28 @@
 
 @if (TempData["searchString"] == null || TempData["searchString"].ToString() == "")
 {
-    <div id="pagination">
-        @if (currentPage > 0)
-        {
-            <button name="page" value="-1" class="btn btn-default"><a href="@Url.Action("Index", "Documentary", new { page = currentPage - 1 })">Prev</a></button>
-        }
+<div id="pagination">
+    @if (currentPage > 0)
+    {
+        @*<button name="page" value="-1" class="btn btn-default"><a href="@Url.Action("Index", "Documentary", new { page = currentPage - 1 })">Prev</a></button>*@
+        <input type="button" value="Prev" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "Documentary", new { page = currentPage - 1 }) + "'");" />
+    }
 
-        @{
-            var displaypage = currentPage + 1;
-            ApplicationDbContext db = new ApplicationDbContext();
-            var numDocumentaries = db.Documentaries.Count();
-            int n = numDocumentaries - ((currentPage + 1) * 6);
-        }
+    @{
+        var displaypage = currentPage + 1;
+        ApplicationDbContext db = new ApplicationDbContext();
+        var numDocumentaries = db.Documentaries.Count();
+        int n = numDocumentaries - ((currentPage + 1) * 6);
+    }
 
-        <text>Page @displaypage</text>
+    <text>Page @displaypage</text>
 
-        @if (n > 0)
-        {
-            <button name="page" value="1" class="btn btn-default"><a href="@Url.Action("Index", "Documentary", new { page = currentPage + 1 })">Next</a></button>
-        }
-    </div>
+    @if (n > 0)
+    {
+        @*<button name="page" value="1" class="btn btn-default"><a href="@Url.Action("Index", "Documentary", new { page = currentPage + 1 })">Next</a></button>*@
+        <input type="button" value="Next" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "Documentary", new { page = currentPage + 1 }) + "'");" />
+    }
+</div>
 }
 
 <br />
