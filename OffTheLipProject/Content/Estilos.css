@@ -158,24 +158,44 @@ input, textarea {
     width: 1040px;
 }
 
-.headerNDH{
+#headerN{
     width: 100%;
     height: 310px;
-    background-image: url("/Content/img/indoBN.jpg");
+    background-image: url("/Content/img/indoBN_News.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: -278px;
     background-position-x: center;
 }
 
-.headerNDH > h2 {
+#headerC {
+    width: 100%;
+    height: 310px;
+    background-image: url("/Content/img/indoBN_Cinema.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -278px;
+    background-position-x: center;
+}
+
+#headerH {
+    width: 100%;
+    height: 310px;
+    background-image: url("/Content/img/indoBN_Hardware.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -278px;
+    background-position-x: center;
+}
+
+/*.headerNDH > h2 {
     font-size: 40px;
     font-family: fantasy;
     position: absolute;
     top: 257px;
     left: 260px;
     color: black;
-}
+}*/
 
 /*
  * ----------------------------------------
