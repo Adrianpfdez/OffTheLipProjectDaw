@@ -292,7 +292,7 @@ namespace OffTheLipProject.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            TempData["Message"] = string.Format("ERROR, Admin User wasnt created");
+            TempData["Message"] = string.Format("ERROR, Admin User was not created");
             return RedirectToAction("Index", "Home");
         }
 
